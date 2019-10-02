@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 
+
 class ViewController: UIViewController , WKNavigationDelegate {
 
     var webView: WKWebView!
@@ -17,25 +18,79 @@ class ViewController: UIViewController , WKNavigationDelegate {
         super.viewDidLoad()
        
         // 1
-        let url = URL(string: "https://www.google.com")!
-        webView.load(URLRequest(url: url))
-       
+        let loginurl = URL(string: "http://contact-centre-test3.project4.com/dashboard/security")!
+        
+        webView.load(URLRequest(url: loginurl))
+        
+        
         // 2
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [refresh]
+        let home = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(self.loadHome(_:)))
+        toolbarItems = [refresh, home]
         navigationController?.isToolbarHidden = false
        
     }
     
+    @objc func loadHome(_ sender:UIBarButtonItem!){
+        print("myLeftSideBarButtonItemTapped")
+        let homeurlreq = URLRequest(url: URL(string: "http://contact-centre-test3.project4.com")!)
+        webView.load(homeurlreq)
+    }
+
+        
+    
+    
+    
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("Test %s", webView)
+        //print("Test %s", webView)
         title = webView.title
     }
 
     override func loadView() {
-        webView = WKWebView()
+        let contentController = WKUserContentController()
+        
+        let scriptSource = """
+            function lookupBarcode() {
+                try {
+                        webkit.messageHandlers.lookupBarcode.postMessage(
+                            {
+                                messageTxt: "Hello"
+                            });
+                        document.body.style.background = "green";
+                    } catch(err) {
+                        document.body.style.background = "red";
+                    }
+                }
+            //document.getElementById('mobileSearch').onclick(lookupBarcode);
+        """
+        let script = WKUserScript(source: scriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        contentController.addUserScript(script)
+        
+        contentController.add(self, name: "lookupBarcode")
+        
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        webView = WKWebView(frame: .zero, configuration: config)
+        //webView = WKWebView()
         webView.navigationDelegate = self
         view = webView
     }
-
 }
+
+extension ViewController:WKScriptMessageHandler {
+    func userContentController(
+        _ userContentController:
+        WKUserContentController,
+        didReceive message: WKScriptMessage) {
+        if message.name == "lookupBarcode",
+        let dict = message.body as? NSDictionary {
+        lookupBarcode(dict: dict)
+        }
+    }
+    
+    func lookupBarcode(dict: NSDictionary) {
+        print("Message: %s", dict["messageTxt"])
+    }
+}
+

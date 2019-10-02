@@ -13,6 +13,7 @@
 		2CACCB2523435F4800C7CECD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CACCB2423435F4800C7CECD /* Assets.xcassets */; };
 		2CACCB2823435F4800C7CECD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CACCB2623435F4800C7CECD /* LaunchScreen.storyboard */; };
 		2CACCB3323435F4800C7CECD /* TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACCB3223435F4800C7CECD /* TestTests.swift */; };
+		2CACCBC4234395C800C7CECD /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACCBC3234395C800C7CECD /* ScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		2CACCB2E23435F4800C7CECD /* TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CACCB3223435F4800C7CECD /* TestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTests.swift; sourceTree = "<group>"; };
 		2CACCB3423435F4800C7CECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CACCBC023437F2700C7CECD /* Test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Bridging-Header.h"; sourceTree = "<group>"; };
+		2CACCBC3234395C800C7CECD /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				2CACCB2423435F4800C7CECD /* Assets.xcassets */,
 				2CACCB2623435F4800C7CECD /* LaunchScreen.storyboard */,
 				2CACCB2923435F4800C7CECD /* Info.plist */,
+				2CACCBC023437F2700C7CECD /* Test-Bridging-Header.h */,
+				2CACCBC3234395C800C7CECD /* ScannerViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			files = (
 				2CACCB2023435F4500C7CECD /* ViewController.swift in Sources */,
 				2CACCB1E23435F4500C7CECD /* AppDelegate.swift in Sources */,
+				2CACCBC4234395C800C7CECD /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,14 +366,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WLD92F2TV4;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = hc.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Test/Test-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -377,14 +387,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WLD92F2TV4;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = hc.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Test/Test-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
